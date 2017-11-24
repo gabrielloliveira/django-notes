@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes</title>
+  <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <header> 
+    <nav class="menu-color">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">Notes</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="">Example 1</a></li>
+            <li><a href="">Example 2</a></li>
+            <li><a href="">Example 3</a></li>
+            <li><a href="">Example 4</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="">Example 1</a></li>
+            <li><a href="">Example 2</a></li>
+            <li><a href="">Example 3</a></li>
+            <li><a href="">Example 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container">
+      <div class="fixed-action-btn">
+        <a class="btn-floating btn-large deep-purple darken-4">
+          <i class="large material-icons">add</i>
+        </a>
+        <ul>
+          <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+          <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+          <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+          <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+        </ul>
+      </div>
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+  <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+  <script src="{% static 'js/materialize.min.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
