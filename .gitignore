@@ -110,4 +110,5 @@ db.sqlite3
 .idea/
 
 # static root
-staticfiles/
+notes/staticfiles/
+notes/static/
