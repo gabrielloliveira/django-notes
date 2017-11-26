@@ -1,0 +1,23 @@
+{% extends 'site/base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="row">
+    <div class="col s12 m6 l4">
+      <form action="{% url 'create' %}" method="post">{% csrf_token %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">{{ form.title|attr:"placeholder:Title"|attr:"required" }}</span>
+            {{ form.content }}
+          </div>
+        </div>
+        <div class="fixed-action-btn">
+          <button class="btn-floating btn-large deep-purple darken-4">
+            <i class="large material-icons">send</i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

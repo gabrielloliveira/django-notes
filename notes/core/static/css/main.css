@@ -1,3 +1,6 @@
 .menu-color{
   background-color: #59008A;
 }
+form input{
+  border-bottom-color: #59008A !important;
+}
