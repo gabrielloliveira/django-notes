@@ -19,7 +19,7 @@
           </div>
           <div class="card-action">
             <a class="btn-floating waves-effect waves-light amber accent-4" href="{% url 'edit' note.id %}"><i class="material-icons">edit</i></a>
-            <a class="btn-floating waves-effect waves-light red darken-3"><i class="material-icons">delete</i></a>
+            <a class="btn-floating waves-effect waves-light red darken-3" href="{% url 'delete' note.id %}"><i class="material-icons">delete</i></a>
           </div>
         </div>
       </div>

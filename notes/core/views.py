@@ -29,7 +29,6 @@ def create_note(request):
 
     return render(request, 'site/create-note.html', {'form': form})
 
-
 @login_required
 def edit_note(request, id):
     note = get_object_or_404(Note, pk=id)
@@ -47,3 +46,8 @@ def edit_note(request, id):
             return HttpResponseRedirect("/home/")
 
     return render(request, 'site/edit-note.html', {'form': form, 'note': note})
+
+@login_required
+def delete_note(request, id):
+    note = Note.objects.filter(id=id).delete()
+    return HttpResponseRedirect("/home/")
