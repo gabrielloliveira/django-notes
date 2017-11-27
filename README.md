@@ -1,7 +1,7 @@
 # Django-Notes
 Simple application of notes created with Django Framework
 
-by: [gabrielloliveira](https://gabrielloliveira.com)
+by: [gabriell oliveira](https://gabrielloliveira.com)
 
 ## Requirements
 - Python - 3.6
@@ -15,5 +15,6 @@ by: [gabrielloliveira](https://gabrielloliveira.com)
 - Enter in the folder **notes** ``` cd notes/ ``` 
 - Execute the migrations of the app ``` python manage.py migrate ```
 - Create a **superuser** ``` python manage.py createsuperuser ```
+- Collect static files ``` python manage.py collectstatic ```
 - Run the application ``` python manage.py runserver ```
 - Open your browser on [localhost:8000](http://localhost:8000)
