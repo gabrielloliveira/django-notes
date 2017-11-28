@@ -89,3 +89,10 @@ def edit_note(request, id):
 def delete_note(request, id):
     note = Note.objects.filter(id=id).delete()
     return HttpResponseRedirect("/home/")
+
+
+@require_POST
+@login_required
+def exit(request):
+    logout(request)
+    return HttpResponseRedirect('/')

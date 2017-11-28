@@ -19,13 +19,29 @@
             <li><a href="">Example 1</a></li>
             <li><a href="">Example 2</a></li>
             <li><a href="">Example 3</a></li>
-            <li><a href="">Example 4</a></li>
+            {% if request.user.is_authenticated %}
+              <li>
+                <form action="{% url 'logout' %}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden">
+                  <button class="btn red darken-3">Logout</button>
+                </form>
+              </li>
+            {% endif %}
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="">Example 1</a></li>
             <li><a href="">Example 2</a></li>
             <li><a href="">Example 3</a></li>
-            <li><a href="">Example 4</a></li>
+            {% if request.user.is_authenticated %}
+              <li>
+                <form action="{% url 'logout' %}" method="post" class="form-logout">
+                  {% csrf_token %}
+                  <input type="hidden">
+                  <button class="btn red darken-3">Logout</button>
+                </form>
+              </li>
+            {% endif %}
           </ul>
         </div>
       </div>
