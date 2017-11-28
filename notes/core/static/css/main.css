@@ -1,6 +1,28 @@
+.login-and-register{
+  background-color: #59008A;
+}
 .menu-color{
   background-color: #59008A;
 }
+button.menu-color:hover{
+  background-color: #4E1270;
+}
+.create-account-link{
+  color: #0d47a1 !important;
+  margin-left: 10px;
+}
 form input{
   border-bottom-color: #59008A !important;
+}
+.delete-form{
+  display: inline;
+}
+.login-form{
+  margin: 100px  auto auto;
+}
+.login-form .card-title{
+  text-align: center;
+}
+.text-centered{
+  text-align: center;
 }

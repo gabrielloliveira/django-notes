@@ -3,8 +3,44 @@ from .models import Note
 from .forms import NoteForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
+def index(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/home/')
+
+    if request.POST:
+        username_or_email = request.POST['username-or-email']
+        password = request.POST['password']
+        try:
+            aux_user = User.objects.get(username=username_or_email)
+
+            if aux_user:
+                found_user = authenticate(username=username_or_email,
+                               password=password)
+                if found_user is not None:
+                    login(request, found_user)
+                    return HttpResponseRedirect('/home/')
+
+        except User.DoesNotExist:
+            try:
+                aux_user = User.objects.get(email=username_or_email)
+
+                if aux_user:
+                    found_user = authenticate(username=username_or_email,
+                               password=password)
+                    if found_user is not None:
+                        login(request, found_user)
+                        return HttpResponseRedirect('/home/')
+
+            except User.DoesNotExist:
+                return render(request, 'site/index.html', {'message': 'User not exists!'})                
+
+    return render(request, 'site/index.html')
+
 @login_required
 def home(request):
     user = request.user
@@ -47,6 +83,8 @@ def edit_note(request, id):
 
     return render(request, 'site/edit-note.html', {'form': form, 'note': note})
 
+
+@require_POST
 @login_required
 def delete_note(request, id):
     note = Note.objects.filter(id=id).delete()

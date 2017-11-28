@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes</title>
+  <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="login-and-register">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12 login-form">
+        <form action="{% url 'index' %}" method="post"> {% csrf_token %}
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Login</span>
+              {% if message %}
+                <p class="text-centered">{{ message }}</p>
+              {% endif %}
+              <input type="text" name="username-or-email" placeholder="Username or Email">
+              <input type="password" name="password" placeholder="Password">
+            </div>
+            <div class="card-action">
+              <button class="waves-effect waves-light btn menu-color">Log in</button>
+              <a href="#" class="create-account-link">Register!</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
