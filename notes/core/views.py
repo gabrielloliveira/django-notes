@@ -13,33 +13,43 @@ def index(request):
         return HttpResponseRedirect('/home/')
 
     if request.POST:
-        username_or_email = request.POST['username-or-email']
+        email = request.POST['email']
         password = request.POST['password']
         try:
-            aux_user = User.objects.get(username=username_or_email)
+            aux_user = User.objects.get(username=email)
 
             if aux_user:
-                found_user = authenticate(username=username_or_email,
+                found_user = authenticate(username=email,
                                password=password)
                 if found_user is not None:
                     login(request, found_user)
                     return HttpResponseRedirect('/home/')
 
         except User.DoesNotExist:
-            try:
-                aux_user = User.objects.get(email=username_or_email)
-
-                if aux_user:
-                    found_user = authenticate(username=username_or_email,
-                               password=password)
-                    if found_user is not None:
-                        login(request, found_user)
-                        return HttpResponseRedirect('/home/')
-
-            except User.DoesNotExist:
-                return render(request, 'site/index.html', {'message': 'User not exists!'})                
+            return render(request, 'site/index.html', {'message': 'User not exists!'})                
 
     return render(request, 'site/index.html')
+
+def register(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/home/')
+
+    if request.POST:
+        email = request.POST['email']
+        password = request.POST['password']
+        try:
+            aux_user = User.objects.get(username=email)
+
+            if aux_user:
+                return render(request, 'site/register.html', {'message': 'This email has already been registered.'})
+
+        except User.DoesNotExist:
+            new_user = User.objects.create_user(username=email,email=email,password=password)
+            new_user.save()
+            return render(request, 'site/register.html', {'message': 'Account successfully created. Sign in'})
+
+            
+    return render(request, 'site/register.html')
 
 @login_required
 def home(request):
@@ -83,13 +93,11 @@ def edit_note(request, id):
 
     return render(request, 'site/edit-note.html', {'form': form, 'note': note})
 
-
 @require_POST
 @login_required
 def delete_note(request, id):
     note = Note.objects.filter(id=id).delete()
     return HttpResponseRedirect("/home/")
-
 
 @require_POST
 @login_required
