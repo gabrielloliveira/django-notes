@@ -1,5 +1,7 @@
 .login-and-register{
   background-color: #59008A;
+  height: 100vh;
+  width: 100vw;
 }
 .menu-color{
   background-color: #59008A;
@@ -28,4 +30,17 @@ form input{
 }
 .form-logout{
   margin-left: 30px;
+}
+.card.red .card-action{
+  border-top-color: rgba(0, 0, 0, 0.2);
+}
+.card.indigo .card-action{
+  border-top-color: rgba(0, 0, 0, 0.2);
+}
+.card.yellow .card-action{
+  border-top-color: rgba(0,0,0,0.1);
+}
+.card-content ul li{
+  list-style: disc;
+  margin-left: 38px;
 }

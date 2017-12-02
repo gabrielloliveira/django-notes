@@ -65,7 +65,8 @@ def create_note(request):
         data = {
           'author': request.user.id,
           'title': request.POST['title'],
-          'content': request.POST['content']
+          'content': request.POST['content'],
+          'color': request.POST['color']
         }
         new_note = NoteForm(data)
         if new_note.is_valid():
@@ -84,7 +85,8 @@ def edit_note(request, id):
         data = {
           'author': request.user.id,
           'title': request.POST['title'],
-          'content': request.POST['content']
+          'content': request.POST['content'],
+          'color': request.POST['color']
         }
         form = NoteForm(data, instance=note)
         if form.is_valid():
