@@ -139,6 +139,6 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-import django_heroku
-django_heroku.settings(locals())
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 
