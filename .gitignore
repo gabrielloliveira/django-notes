@@ -112,3 +112,5 @@ db.sqlite3
 # static root
 notes/staticfiles/
 notes/static/
+
+.vscode/

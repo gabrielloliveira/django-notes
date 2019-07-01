@@ -13,7 +13,7 @@ COLOR_CHOICES = (
 )
 
 class Note(models.Model):
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=140, blank=True)
     content = RichTextField()
     date_created = models.DateTimeField(default=timezone.now) 
